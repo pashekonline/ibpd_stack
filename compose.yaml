@@ -20,7 +20,8 @@ services:
       - PGRST_JWT_SECRET=abcdefghijklmnopqrstuvwxyzabcdefghijklmnopqrstuvwxyz
 
   postgresql:
-    image: postgres
+    build:
+      dockerfile: dockerfile.postgres
     container_name: postgresql
     restart: unless-stopped
     ports:
