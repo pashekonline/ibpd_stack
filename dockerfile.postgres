@@ -1,4 +1,2 @@
 FROM postgres
-COPY ./postgres/init_objects.sql .
-
-RUN psql -U tr_ibd_owner -d tr_ibd -c init_objects.sql
+COPY ./postgres/init_objects.sql /docker-entrypoint-initdb.d
