@@ -15,11 +15,13 @@ CREATE TABLE distributors (
      name   varchar(40) NOT NULL CHECK (name <> '')
 );
 
-insert into films (code, title, did, date_prod, kind, len) \
-	values ('tnj', 'Tom and Jerry', 1, '1981-01-01', 'mult', '1 hours 20 minutes');
+insert into films (code, title, did, date_prod, kind, len) values ('tnj', 'Tom and Jerry', 1, '1981-01-01', 'mult', '1 hours 20 minutes');
 	
-insert into films (code, title, did, date_prod, kind, len) 
-	values ('sup', 'Superman', 1, '1991-01-01', 'film', '2 hours 10 minutes');
+insert into films (code, title, did, date_prod, kind, len) values ('sup', 'Superman', 1, '1991-01-01', 'film', '2 hours 10 minutes');
+
+insert into distributors (did, name) values (1, 'Paramount');
+	
+insert into distributors (did, name) values (2, '20 Century Fox');
 
 create view films_vw as select * from films;
 
