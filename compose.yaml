@@ -7,18 +7,6 @@ services:
     ports: 
       - "80:80"
 
-  postgrest:
-    image: postgrest/postgrest
-    container_name: postgrest
-    restart: unless-stopped
-    ports: 
-      - "3000:3000"
-    environment:
-      - PGRST_DB_URI=postgres://tr_ibd_owner:owner_pass@host.docker.internal/tr_ibd
-      - PGRST_DB_SCHEMA=public
-      - PGRST_DB_ANON_ROLE=tr_ibd_owner
-      - PGRST_JWT_SECRET=abcdefghijklmnopqrstuvwxyzabcdefghijklmnopqrstuvwxyz
-
   postgresql:
     build:
       dockerfile: dockerfile.postgres
@@ -30,3 +18,15 @@ services:
       - POSTGRES_USER=tr_ibd_owner
       - POSTGRES_PASSWORD=owner_pass
       - POSTGRES_DB=tr_ibd
+
+  postgrest:
+    image: postgrest/postgrest
+    container_name: postgrest
+    restart: unless-stopped
+    ports: 
+      - "3000:3000"
+    environment:
+      - PGRST_DB_URI=postgres://tr_ibd_owner:owner_pass@host.docker.internal/tr_ibd
+      - PGRST_DB_SCHEMA=public
+      - PGRST_DB_ANON_ROLE=tr_ibd_owner
+      - PGRST_JWT_SECRET=abcdefghijklmnopqrstuvwxyzabcdefghijklmnopqrstuvwxyz
