@@ -30,3 +30,4 @@ services:
       - PGRST_DB_SCHEMA=public
       - PGRST_DB_ANON_ROLE=tr_ibd_owner
       - PGRST_JWT_SECRET=abcdefghijklmnopqrstuvwxyzabcdefghijklmnopqrstuvwxyz
+      - PGRST_DB_PRE_REQUEST=set_timeout_fn
