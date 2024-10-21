@@ -27,7 +27,4 @@ services:
       - "3000:3000"
     environment:
       - PGRST_DB_URI=postgres://tr_ibd_owner:owner_pass@host.docker.internal/tr_ibd
-      - PGRST_DB_SCHEMA=public
-      - PGRST_DB_ANON_ROLE=tr_ibd_owner
-      - PGRST_JWT_SECRET=abcdefghijklmnopqrstuvwxyzabcdefghijklmnopqrstuvwxyz
-      - PGRST_DB_PRE_REQUEST=set_timeout_fn
+      - PGRST_DB_PRE_CONFIG=postgrest.pre_config

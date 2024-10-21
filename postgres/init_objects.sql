@@ -50,5 +50,17 @@ END;
 $$
 LANGUAGE plpgsql;
 
-grant select on delay_fn to tr_ibd_ocn;
-grant select on delay_fn to tr_ibd_esfm;
+grant execute on function delay_fn() to tr_ibd_ocn;
+grant execute on function delay_fn() to tr_ibd_esfm;
+
+create schema postgrest;
+grant usage on schema postgrest to tr_ibd_owner;
+
+create or replace function postgrest.pre_config()
+returns void as $$
+  select
+      set_config('pgrst.db_schemas', 'public', true)
+    , set_config('pgrst.jwt_secret', 'abcdefghijklmnopqrstuvwxyzabcdefghijklmnopqrstuvwxyz', true)
+    , set_config('pgrst.db_pre_request', 'set_timeout_fn', true)
+    , set_config('pgrst.db_anon_role', 'tr_ibd_anon', true);
+$$ language sql;
