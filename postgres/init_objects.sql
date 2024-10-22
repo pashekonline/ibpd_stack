@@ -62,5 +62,6 @@ returns void as $$
       set_config('pgrst.db_schemas', 'public', true)
     , set_config('pgrst.jwt_secret', 'abcdefghijklmnopqrstuvwxyzabcdefghijklmnopqrstuvwxyz', true)
     , set_config('pgrst.db_pre_request', 'set_timeout_fn', true)
-    , set_config('pgrst.db_anon_role', 'tr_ibd_anon', true);
+    , set_config('pgrst.db_anon_role', 'tr_ibd_owner', true)
+    , set_config('pgrst.server_timing_enabled', 'true', true);
 $$ language sql;
