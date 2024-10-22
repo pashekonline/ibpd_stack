@@ -56,7 +56,7 @@ grant execute on function delay_fn() to tr_ibd_esfm;
 create schema postgrest;
 grant usage on schema postgrest to tr_ibd_owner;
 
-create or replace function postgrest.pre_config()
+create or replace function postgrest.pre_config_fn()
 returns void as $$
   select
       set_config('pgrst.db_schemas', 'public', true)
