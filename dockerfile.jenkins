@@ -1,0 +1,6 @@
+FROM jenkins/jenkins:lts
+
+USER root
+
+RUN apt update
+RUN apt install postgresql-client -y

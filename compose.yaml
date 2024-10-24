@@ -41,7 +41,8 @@ services:
         condition: service_healthy
     
   jenkins:
-      image: jenkins/jenkins:lts
+      build:
+        dockerfile: dockerfile.jenkins
       container_name: jenkins
       privileged: true
       user: root
