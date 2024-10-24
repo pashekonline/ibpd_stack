@@ -39,6 +39,14 @@ services:
     depends_on:
       postgresql:
         condition: service_healthy
+    
+  jenkins:
+      image: jenkins/jenkins:lts
+      container_name: jenkins
+      privileged: true
+      user: root
+      ports:
+      - 8080:8080 
   
   # postgrest_2:
   #   image: postgrest/postgrest
