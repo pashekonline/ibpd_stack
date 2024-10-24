@@ -4,3 +4,9 @@ USER root
 
 RUN apt update
 RUN apt install postgresql-client -y
+
+COPY ./configs/.pgpass /var/lib/postgresql/
+
+RUN chmod 600 /var/lib/postgresql/.pgpass
+
+ENV PGPASSFILE='/var/lib/postgresql/.pgpass'
