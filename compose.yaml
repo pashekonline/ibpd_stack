@@ -40,14 +40,14 @@ services:
       postgresql:
         condition: service_healthy
     
-  jenkins:
-      build:
-        dockerfile: dockerfile.jenkins
-      container_name: jenkins
-      privileged: true
-      user: root
-      ports:
-      - 8080:8080 
+  # jenkins:
+  #     build:
+  #       dockerfile: dockerfile.jenkins
+  #     container_name: jenkins
+  #     privileged: true
+  #     user: root
+  #     ports:
+  #     - 8080:8080 
   
   # postgrest_2:
   #   image: postgrest/postgrest
