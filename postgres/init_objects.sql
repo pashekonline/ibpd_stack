@@ -1,8 +1,8 @@
 create role tr_ibd_esfm nologin;
-ALTER ROLE tr_ibd_esfm SET statement_timeout = 10000;
+-- ALTER ROLE tr_ibd_esfm SET statement_timeout = 10000;
 
 create role tr_ibd_ocn nologin;
-ALTER ROLE tr_ibd_ocn SET statement_timeout = 3000;
+-- ALTER ROLE tr_ibd_ocn SET statement_timeout = 3000;
 
 CREATE TABLE films (
     code        char(5) CONSTRAINT firstkey PRIMARY KEY,
@@ -33,6 +33,7 @@ grant select on films_vw to tr_ibd_esfm;
 create view distributors_vw as select * from distributors;
 
 grant select on distributors_vw to tr_ibd_ocn;
+grant insert on distributors to tr_ibd_ocn;
 
 CREATE OR REPLACE FUNCTION delay_fn()
 RETURNS VOID AS $$

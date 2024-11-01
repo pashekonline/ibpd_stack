@@ -1,3 +1,25 @@
-FROM nginx
+FROM alpine:3.6
+
+RUN apk add --no-cache nginx-mod-http-lua
+
+# Delete default config
+RUN rm -r /etc/nginx/conf.d && rm /etc/nginx/nginx.conf
+
+# Create folder for PID file
+RUN mkdir -p /run/nginx
+
+# Add our nginx conf
 COPY ./configs/default.conf /etc/nginx/conf.d/
 COPY ./configs/nginx.conf /etc/nginx/
+
+# CMD ["nginx"]
+CMD ["nginx", "-g", "daemon off;"]
+
+# Офиициальный NGINX
+# FROM nginx
+
+# #RUN apt update
+# #RUN apt install nginx-plus-module-lua
+
+# COPY ./configs/default.conf /etc/nginx/conf.d/
+# COPY ./configs/nginx.conf /etc/nginx/
