@@ -34,7 +34,8 @@ services:
     environment:
       - PGRST_LOG_LEVEL=debug
       - PGRST_SERVER_PORT=3000
-      - PGRST_DB_URI=postgres://tr_ibd_owner:owner_pass@host.docker.internal/tr_ibd
+#      - PGRST_DB_URI=postgres://tr_ibd_owner:owner_pass@host.docker.internal/tr_ibd
+      - PGRST_DB_URI=postgres://tr_ibd_owner:owner_pass@host.docker.internal,tr_ibd_owner:owner_pass@8.8.8.8/tr_ibd?target_session_attrs=any
       - PGRST_JWT_SECRET=abcdefghijklmnopqrstuvwxyzabcdefghijklmnopqrstuvwxyz
       - PGRST_DB_PRE_CONFIG=postgrest.pre_config_fn
       - PGRST_ADMIN_SERVER_PORT=3030
@@ -52,7 +53,8 @@ services:
     environment:
       - PGRST_LOG_LEVEL=debug
       - PGRST_SERVER_PORT=3001
-      - PGRST_DB_URI=postgres://tr_ibd_owner:owner_pass@host.docker.internal/tr_ibd
+#     - PGRST_DB_URI=postgres://tr_ibd_owner:owner_pass@host.docker.internal/tr_ibd
+      - PGRST_DB_URI=postgres://tr_ibd_owner:owner_pass@host.docker.internal,tr_ibd_owner:owner_pass@8.8.8.8/tr_ibd?target_session_attrs=any
       - PGRST_DB_PRE_CONFIG=postgrest.pre_config_fn
       - PGRST_ADMIN_SERVER_PORT=3031
     depends_on:
@@ -69,7 +71,8 @@ services:
     environment:
       - PGRST_LOG_LEVEL=debug
       - PGRST_SERVER_PORT=3002
-      - PGRST_DB_URI=postgres://tr_ibd_owner:owner_pass@host.docker.internal/tr_ibd
+#      - PGRST_DB_URI=postgres://tr_ibd_owner:owner_pass@host.docker.internal/tr_ibd
+      - PGRST_DB_URI=postgres://tr_ibd_owner:owner_pass@host.docker.internal,tr_ibd_owner:owner_pass@8.8.8.8/tr_ibd?target_session_attrs=any
       - PGRST_DB_PRE_CONFIG=postgrest.pre_config_fn
       - PGRST_ADMIN_SERVER_PORT=3032
     depends_on:
