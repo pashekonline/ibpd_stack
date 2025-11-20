@@ -57,10 +57,15 @@ grant execute on function delay_fn() to tr_ibd_esfm;
 create schema postgrest;
 grant usage on schema postgrest to tr_ibd_owner;
 
+create schema test;
+grant usage on schema test to tr_ibd_owner;
+
+create view test.test_films_vw as select * from films;
+
 create or replace function postgrest.pre_config_fn()
 returns void as $$
   select
-      set_config('pgrst.db_schemas', 'public', true)
+      set_config('pgrst.db_schemas', 'public, test', true)
     , set_config('pgrst.db_pre_request', 'set_timeout_fn', true)
     , set_config('pgrst.db_anon_role', 'tr_ibd_owner', true)
     , set_config('pgrst.server_timing_enabled', 'true', true);
