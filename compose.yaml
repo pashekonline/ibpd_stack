@@ -34,8 +34,8 @@ services:
     environment:
       - PGRST_LOG_LEVEL=debug
       - PGRST_SERVER_PORT=3000
-#      - PGRST_DB_URI=postgres://tr_ibd_owner:owner_pass@host.docker.internal/tr_ibd
-      - PGRST_DB_URI=postgres://tr_ibd_owner:owner_pass@host.docker.internal,8.8.8.8/tr_ibd?target_session_attrs=read-write
+      - PGRST_DB_URI=postgres://tr_ibd_owner:owner_pass@172.18.0.4/tr_ibd
+#      - PGRST_DB_URI=postgres://tr_ibd_owner:owner_pass@host.docker.internal,8.8.8.8/tr_ibd?target_session_attrs=read-write
       - PGRST_JWT_SECRET=abcdefghijklmnopqrstuvwxyzabcdefghijklmnopqrstuvwxyz
       - PGRST_DB_PRE_CONFIG=postgrest.pre_config_fn
       - PGRST_ADMIN_SERVER_PORT=3030
@@ -43,24 +43,24 @@ services:
       postgresql:
         condition: service_healthy
   
-#   postgrest_2:
-#     image: postgrest/postgrest
-#     container_name: postgrest_2
-#     restart: unless-stopped
-#     ports: 
-#       - "3001:3001"
-#       - "3031:3031"
-#     environment:
-#       - PGRST_LOG_LEVEL=debug
-#       - PGRST_SERVER_PORT=3001
-# #     - PGRST_DB_URI=postgres://tr_ibd_owner:owner_pass@host.docker.internal/tr_ibd
-#       - PGRST_DB_URI=postgres://tr_ibd_owner:owner_pass@host.docker.internal,8.8.8.8/tr_ibd?target_session_attrs=read-write
-#       - PGRST_JWT_SECRET=abcdefghijklmnopqrstuvwxyzabcdefghijklmnopqrstuvwxyz
-#       - PGRST_DB_PRE_CONFIG=postgrest.pre_config_fn
-#       - PGRST_ADMIN_SERVER_PORT=3031
-#     depends_on:
-#       postgresql:
-#         condition: service_healthy
+  postgrest_2:
+    image: postgrest/postgrest
+    container_name: postgrest_2
+    restart: unless-stopped
+    ports: 
+      - "3001:3001"
+      - "3031:3031"
+    environment:
+      - PGRST_LOG_LEVEL=debug
+      - PGRST_SERVER_PORT=3001
+      - PGRST_DB_URI=postgres://tr_ibd_owner:owner_pass@172.18.0.4/tr_ibd
+#      - PGRST_DB_URI=postgres://tr_ibd_owner:owner_pass@host.docker.internal,8.8.8.8/tr_ibd?target_session_attrs=read-write
+      - PGRST_JWT_SECRET=abcdefghijklmnopqrstuvwxyzabcdefghijklmnopqrstuvwxyz
+      - PGRST_DB_PRE_CONFIG=postgrest.pre_config_fn
+      - PGRST_ADMIN_SERVER_PORT=3031
+    depends_on:
+      postgresql:
+        condition: service_healthy
 
 #   postgrest_3:
 #     image: postgrest/postgrest
